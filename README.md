@@ -55,19 +55,19 @@ _gaq.push(['_setAccount', 'UA-13266796-1']);
 
 ### 备注
 
-【setconfig值必须encodeURIComponent处理】
+【setconfig值必须encodeURIComponent处理,并且参数无引号,空值位置留空】
 
 ####参数只有一组
 
 ``` javascript
 // 例：谷歌统计代码截取
  _gaq.push(['_setCustomVar', 1, 'node', 'index', 3]);
-// ['_setCustomVar', 1, 'node', 'index', 3] 为你的统计 setconfig。
-['_setCustomVar', 1, 'node', 'index', 3]先去除单引号[_setCustomVar, 1, node, index, 3]需转化为字符串%5B_setCustomVar%2C%201%2C%20node%2C%20index%2C%203%5D传递
+// [_setCustomVar, 1, node, index, 3] 为你的统计 setconfig。
+
 此例：setconfig='%5B_setCustomVar%2C%201%2C%20node%2C%20index%2C%203%5D';
 ``` 
 
-####参数有多组
+####参数有多组[用,号隔开]
 
 ``` javascript
 // 例：谷歌统计代码截取
@@ -75,9 +75,8 @@ _gaq.push(['_setAccount', 'UA-13266796-1']);
  _gaq.push(['_setCustomVar', 2, 'pro_cateid', '7911', 3]);
  _gaq.push(['_setCustomVar', 3, 'pro_gid', '377551', 3]);
  _gaq.push(['_setCustomVar', 4, 'pro_cid', '', 3]);
-// ['_setCustomVar', 1, 'node', 'picture', 3]、['_setCustomVar', 2, 'pro_cateid', '7911', 3]等 为你的统计 setconfig。
-['_setCustomVar', 1, 'node', 'picture', 3]、['_setCustomVar', 2, 'pro_cateid', '7911', 3]等先去除单引号然后用+号隔开[_setCustomVar, 1, node, picture, 3]+[_setCustomVar, 2, pro_cateid, 7911, 3]等需转化为字符串%5B_setCustomVar%2C%201%2C%20node%2C%20picture%2C%203%5D%2B%5B_setCustomVar%2C%202%2C%20pro_cateid%2C%207911%2C%203%5D%2B%5B_setCustomVar%2C%203%2C%20pro_gid%2C%20377551%2C%203%5D%2B%5B_setCustomVar%2C%204%2C%20pro_cid%2C%20%2C%203%5D传递
-此例：setconfig='%5B_setCustomVar%2C%201%2C%20node%2C%20picture%2C%203%5D%2B%5B_setCustomVar%2C%202%2C%20pro_cateid%2C%207911%2C%203%5D%2B%5B_setCustomVar%2C%203%2C%20pro_gid%2C%20377551%2C%203%5D%2B%5B_setCustomVar%2C%204%2C%20pro_cid%2C%20%2C%203%5D';
+// [_setCustomVar, 1, node, picture, 3],[_setCustomVar, 2, pro_cateid, 7911, 3],[_setCustomVar, 3, pro_gid, 377551, 3],[_setCustomVar, 4, pro_cid, , 3] 为你的统计 setconfig。
+此例：setconfig='%5B_setCustomVar%2C%201%2C%20node%2C%20picture%2C%203%5D%2C%5B_setCustomVar%2C%202%2C%20pro_cateid%2C%207911%2C%203%5D%2C%5B_setCustomVar%2C%203%2C%20pro_gid%2C%20377551%2C%203%5D%2C%5B_setCustomVar%2C%204%2C%20pro_cid%2C%20%2C%203%5D';
 ``` 
 
 ## 事件追踪属性: data-stats-google-obj

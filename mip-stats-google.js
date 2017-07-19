@@ -29,7 +29,7 @@ define(function (require) {
             
             // 检测setconfig是否存在
             if (setConfig) {         
-                var setCustom = buildArry(decodeURIComponent(setConfig));
+                var setCustom = buildArry(decodeURIComponent(setConfig));                
                 setCustom.forEach(function  (val) {
                 	_gaq.push(val);
                 })             
@@ -70,7 +70,7 @@ define(function (require) {
                 statusData = JSON.parse(decodeURIComponent(statusData));
             }
             catch (e) {
-//              '事件追踪data-stats-google-obj数据不正确';
+            	console.warn('事件追踪data-stats-google-obj数据不正确');
                 return;
             }
 
@@ -110,7 +110,7 @@ define(function (require) {
                         statusJson = JSON.parse(decodeURIComponent(tempData));
                     }
                     catch (e) {
-//                      '事件追踪data-stats-google-obj数据不正确';
+                        console.warn('事件追踪data-stats-google-obj数据不正确');
                         return;
                     }
                     if (!statusJson.data) {
@@ -128,23 +128,16 @@ define(function (require) {
         if (!arrayStr) {
             return;
         }
-    	var strArr = arrayStr.slice(0, arrayStr.length).split('+');
-    	strArr.forEach(function  (val,index) {
-    		
-    		var arr = val.slice(1, val.length-1).split(',');
-    		var newArray = [];
-    		
-    		arr.forEach(function  (val,index) {      		
-    			var item = val.replace(/(^\s*)|(\s*$)/g, '').replace(/\'/g, '');
-    			if (index === 1 || index === 4) {
-	                item = Number(item);
-	            }
-    			newArray.push(item);
-    		})
-    		strArr[index] = newArray;
+        var strArr = arrayStr.slice(1, arrayStr.length - 1).replace(/\s/g, '').split('],[');
+        
+        var newArr = [];
+        
+    	strArr.forEach(function  (val,index) {		
+    		var arr = val.split(',');		
+    		newArr.push(arr);
     	})      	  
 
-        return strArr;
+        return newArr;
     }
 
     return customElement;
