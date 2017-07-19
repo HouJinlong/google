@@ -15,14 +15,14 @@ MIP提供谷歌统计的插件，便于分析页面数据，需要提前到谷�
 
 ``` javascript
 // 例：谷歌统计代码截取
-_gaq.push(['_setAccount', 'UA-13266796-1']);
-// UA-13266796-1 为你的统计 token。此例 token="UA-13266796-1"
+_gaq.push(['_setAccount', 'UA-1322396-1']);
+// UA-13266796-1 为你的统计 token。此例 token="UA-1322396-1"
 ```
 
 谷歌统计插件引入示例:
 
 ```
-<mip-stats-google token="UA-13266796-1"></mip-stats-google>
+<mip-stats-google token="UA-1322396-1"></mip-stats-google>
 
 ```
 
