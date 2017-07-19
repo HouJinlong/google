@@ -22,7 +22,7 @@ _gaq.push(['_setAccount', 'UA-13266796-1']);
 谷歌统计插件引入示例:
 
 ```
-<mip-stats-google token="02890d4a309827eb62bc3335b2b28f7f"></mip-stats-google>
+<mip-stats-google token="UA-13266796-1"></mip-stats-google>
 
 ```
 
