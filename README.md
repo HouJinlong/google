@@ -8,26 +8,26 @@
 
 ## 示例
 
-MIP提供谷歌统计的插件，便于分析页面数据，需要提前到谷歌统计这边创建站点，在谷歌统计后台会自动生成js代码。从中找出token后插入到MIP组件的token
+MIP提供谷歌分析（Google Analytics）的插件，便于分析页面数据，需要提前到谷歌分析（Google Analytics）这边创建站点，在谷歌分析（Google Analytics）后台会自动生成js代码。从中找出token后插入到MIP组件的token
 位置。方法为：
 
 ``` javascript
-// 例：谷歌统计代码截取
+// 例：谷歌分析（Google Analytics）代码截取
 _gaq.push(['_setAccount', 'UA-1322396-1']);
 // UA-13266796-1 为你的统计 token。此例 token="UA-1322396-1"
 ```
 
-谷歌统计插件引入示例:
+谷歌分析（Google Analytics）插件引入示例:
 
 ```
 <mip-stats-google token="UA-1322396-1"></mip-stats-google>
 
 ```
 
-谷歌统计事件追踪示例:
+谷歌分析（Google Analytics）事件追踪示例:
 ```
 <div data-stats-google-obj="%7B%22type%22%3A%22click%22%2C%22data%22%3A%22%5B_trackEvent%2CVideos%2C%20Play%2C%20Gone%20With%20the%20Wind%5D%22%7D">
-    我是自动触发
+    我是点击触发
 </div>
  
 ```
@@ -36,7 +36,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 
 ### token
 
-说明：token，从谷歌统计代码中截取
+说明：token，从谷歌分析（Google Analytics）代码中截取
 
 必填：是
 
@@ -49,7 +49,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 
 必填：否
 
-格式：字符串
+格式：字符串数组
 
 ### 备注
 
@@ -58,7 +58,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 ####参数只有一组
 
 ``` javascript
-// 例：谷歌统计代码截取
+// 例：谷歌分析（Google Analytics）代码截取
  _gaq.push(['_setCustomVar', 1, 'node', 'index', 3]);
 // [_setCustomVar, 1, node, index, 3] 为你的统计 setconfig。
 
@@ -68,7 +68,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 ####参数有多组[用,号隔开]
 
 ``` javascript
-// 例：谷歌统计代码截取
+// 例：谷歌分析（Google Analytics）代码截取
  _gaq.push(['_setCustomVar', 1, 'node', 'picture', 3]);
  _gaq.push(['_setCustomVar', 2, 'pro_cateid', '7911', 3]);
  _gaq.push(['_setCustomVar', 3, 'pro_gid', '377551', 3]);
@@ -85,7 +85,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 
 必填：是
 
-格式：字符串数组
+格式：字符串
 
 
 ### data
@@ -94,7 +94,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 
 必填：是
 
-格式：字符串
+格式：字符串数组
 
 ### 备注
 
