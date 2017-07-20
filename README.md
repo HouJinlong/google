@@ -1,10 +1,10 @@
 # mip-stats-google 谷歌分析（Google Analytics）
 
-描述|谷歌分析（Google Analytics）组件
-----|----
-类型| 通用
-支持布局|N/S
-所需脚本|https://mipcache.bdstatic.com/static/v1/mip-stats-google/mip-stats-google.js
+ 描述|谷歌分析（Google Analytics）组件
+ ----|----
+ 类型| 通用
+ 支持布局|N/S
+ 所需脚本|https://mipcache.bdstatic.com/static/v1/mip-stats-google/mip-stats-google.js
 
 ## 示例
 
@@ -55,7 +55,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 
 【setconfig值必须encodeURIComponent处理,并且参数无引号,空值位置留空】
 
-####参数只有一组
+#### 参数只有一组
 
 ``` javascript
 // 例：谷歌分析（Google Analytics）代码截取
@@ -65,7 +65,7 @@ _gaq.push(['_setAccount', 'UA-1322396-1']);
 此例：setconfig='%5B_setCustomVar%2C%201%2C%20node%2C%20index%2C%203%5D';
 ``` 
 
-####参数有多组[用,号隔开]
+#### 参数有多组[用,号隔开]
 
 ``` javascript
 // 例：谷歌分析（Google Analytics）代码截取
