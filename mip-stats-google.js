@@ -5,57 +5,35 @@
  * From: mip-stats-google
  */
 define(function (require) {
-	var $ = require('zepto');
-    var viewer = require('viewer');
-    
+    var $ = require('zepto');
     var customElement = require('customElement').create();
-   
     customElement.prototype.createdCallback = function () {
-    	
-       var elem = this.element;
-       var token = elem.getAttribute('token');
-       var setConfig = elem.getAttribute('setconfig');
-       var pageClass = elem.getAttribute('pageclass');    
-       /**
-         * 检测token是否存在
-         */
+        var elem = this.element;
+        var token = elem.getAttribute('token');
+        var setConfig = elem.getAttribute('setconfig');
         if (token) {
-        	window._gaq = window._gaq || [];
-        	
-        	_gaq.push([
-                '_setAccount',
-                token
-            ]);     
-            
-            // 检测setconfig是否存在
-            if (setConfig) {         
-                var setCustom = buildArry(decodeURIComponent(setConfig));                
+            window._gaq = window._gaq || [];
+            window._gaq.push(['_setAccount', token]);
+            if (setConfig) {
+                var setCustom = buildArry(decodeURIComponent(setConfig));
                 setCustom.forEach(function  (val) {
-                	_gaq.push(val);
-                })             
+                    window._gaq.push(val);
+                });
             }
-                        
-	 		_gaq.push(['_trackPageview']); 
-	 		
-        	var ga = document.createElement('script');
+            window._gaq.push(['_trackPageview']);
+            var ga = document.createElement('script');
             ga.type = 'text/javascript';
-    		ga.async = true;
-    		ga.src = ('https:' == document.location.protocol ? 'https://ssl': 'http://www') + '.google-analytics.com/ga.js';
+            ga.async = true;
+            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             $(elem).append(ga);
-            
             ga.onload = function () {
-           	 bindEle();
-        	};
-                     
+                bindEle();
+            };
         }
     };
-    
-   	 // 绑定事件追踪
     function bindEle() {
-
-        // 获取所有需要触发的dom
         var tagBox = document.querySelectorAll('*[data-stats-google-obj]');
-
+		
         for (var index = 0; index < tagBox.length; index++) {
             var statusData = tagBox[index].getAttribute('data-stats-google-obj');
 
@@ -70,12 +48,12 @@ define(function (require) {
                 statusData = JSON.parse(decodeURIComponent(statusData));
             }
             catch (e) {
-            	console.warn('事件追踪data-stats-google-obj数据不正确');
+//          	'事件追踪data-stats-google-obj数据不正确';
                 return;
             }
 
             var eventtype = statusData.type;
-
+				console.log(eventtype)
             /**
              * 检测传递数据是否存在
              */
@@ -84,7 +62,7 @@ define(function (require) {
             }
 
             var data = buildArry(statusData.data);
-
+			
             if (eventtype !== 'click' && eventtype !== 'mouseup' && eventtype !== 'load') {
                 // 事件限制到click,mouseup,load(直接触发)
                 return;
@@ -97,11 +75,11 @@ define(function (require) {
             $(tagBox[index]).addClass('mip-stats-eventload');
 
             if (eventtype === 'load') {
-                _gaq.push(data);
+                window._gaq.push(data);               
             }
             else {
-                tagBox[index].addEventListener(eventtype, function(event) {
-                    var tempData = this.getAttribute('data-stats-google-obj');
+                tagBox[index].addEventListener(eventtype, function (event) {               	
+                    var tempData = this.getAttribute('data-stats-google-obj');                    
                     if (!tempData) {
                         return;
                     }
@@ -110,14 +88,17 @@ define(function (require) {
                         statusJson = JSON.parse(decodeURIComponent(tempData));
                     }
                     catch (e) {
-                        console.warn('事件追踪data-stats-google-obj数据不正确');
+//                      '事件追踪data-stats-google-obj数据不正确';
                         return;
-                    }
+                    }                    
                     if (!statusJson.data) {
                         return;
                     }
                     var attrData = buildArry(statusJson.data);
-                    _gaq.push(attrData);
+                    attrData.forEach(function  (val) {
+                    	console.log(val);
+                    	window._gaq.push(val);
+                    })                    
                 }, false);
             }
         }
@@ -129,16 +110,12 @@ define(function (require) {
             return;
         }
         var strArr = arrayStr.slice(1, arrayStr.length - 1).replace(/\s/g, '').split('],[');
-        
         var newArr = [];
-        
-    	strArr.forEach(function  (val,index) {		
-    		var arr = val.split(',');		
-    		newArr.push(arr);
-    	})      	  
-
-        return newArr;
+        strArr.forEach(function  (val, index) {
+            var arr = val.split(',');
+            newArr.push(arr);
+        });
+        return newArr;       
     }
-
     return customElement;
 });

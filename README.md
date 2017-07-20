@@ -1,8 +1,6 @@
-# mip-stats-google 谷歌统计
+# mip-stats-google 谷歌分析（Google Analytics）
 
-添加谷歌统计。
-
-描述|谷歌统计组件，用于统计页面数据
+描述|谷歌分析（Google Analytics）组件
 ----|----
 类型| 通用
 支持布局|N/S
@@ -15,20 +13,20 @@ MIP提供谷歌统计的插件，便于分析页面数据，需要提前到谷�
 
 ``` javascript
 // 例：谷歌统计代码截取
-_gaq.push(['_setAccount', 'UA-13266796-1']);
-// UA-13266796-1 为你的统计 token。此例 token="UA-13266796-1"
+_gaq.push(['_setAccount', 'UA-1322396-1']);
+// UA-13266796-1 为你的统计 token。此例 token="UA-1322396-1"
 ```
 
 谷歌统计插件引入示例:
 
 ```
-<mip-stats-google token="UA-13266796-1"></mip-stats-google>
+<mip-stats-google token="UA-1322396-1"></mip-stats-google>
 
 ```
 
 谷歌统计事件追踪示例:
 ```
-<div data-stats-google-obj="%7B%22type%22:%22click%22,%22data%22:%22%5B_trackPageview,%20/virtual/login%5D%22%7D">
+<div data-stats-google-obj="%7B%22type%22%3A%22click%22%2C%22data%22%3A%22%5B_trackEvent%2CVideos%2C%20Play%2C%20Gone%20With%20the%20Wind%5D%22%7D">
     我是自动触发
 </div>
  
@@ -100,5 +98,5 @@ _gaq.push(['_setAccount', 'UA-13266796-1']);
 
 ### 备注
 
-data-stats-google-obj值必须encodeURIComponent处理,如{"type":"click","data":"[_trackPageview, /virtual/login]"};需转化为%7B%22type%22:%22click%22,%22data%22:%22%5B_trackPageview,%20/virtual/login%5D%22%7D
+data-stats-google-obj值必须encodeURIComponent处理,如{"type":"click","data":"[_trackEvent,Videos, Play, Gone With the Wind]"};需转化为%7B%22type%22%3A%22click%22%2C%22data%22%3A%22%5B_trackEvent%2CVideos%2C%20Play%2C%20Gone%20With%20the%20Wind%5D%22%7D
 
