@@ -1,11 +1,26 @@
 # mip-stats-google 谷歌分析（Google Analytics）
 
 
-|  描述       | 谷歌分析（Google Analytics）组件   |
-| --------   | -----:   |
-| 类型      | 通用      |
-|  支持布局      | N/S     |
-| 所需脚本    | https://mipcache.bdstatic.com/static/v1/mip-stats-google/mip-stats-google.js      |
+<div>
+        <table border="0">
+	  <tr>
+	    <th>描述</th>
+	    <th>谷歌分析（Google Analytics）</th>
+	  </tr>
+	  <tr>
+	    <td>类型</td>
+	    <td>通用</td>
+	  </tr>
+	  <tr>
+	    <td>支持布局</td>
+	    <td>N/S</td>
+	  </tr>
+	  <tr>
+	    <td>所需脚本</td>
+	    <td>https://mipcache.bdstatic.com/static/v1/mip-stats-google/mip-stats-google.js</td>
+	  </tr>
+	</table>
+</div>
 
 ## 示例
 
